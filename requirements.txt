@@ -3,3 +3,6 @@ python-dotenv
 ipykernel
 pandas
 numpy
+pymongo
+certifi
+-e .
