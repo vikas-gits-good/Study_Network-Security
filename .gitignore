@@ -9,7 +9,7 @@ __pycache__/
 # Hide
 .venv
 Research/
-
+networksecurity/
 
 # Distribution / packaging
 .Python
