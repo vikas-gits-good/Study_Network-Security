@@ -11,7 +11,7 @@ __pycache__/
 Research/
 networksecurity/
 logs/
-secret.txt
+Artifacts/
 
 # Distribution / packaging
 .Python

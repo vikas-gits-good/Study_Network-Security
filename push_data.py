@@ -11,6 +11,11 @@ import pymongo
 from Network_Security.Exception.exception import NetworkSecurityException
 from Network_Security.Logging.logger_train import logger_train
 
+load_dotenv()
+mongo_db_url = os.getenv("MONGO_DB_URL")
+# only allow certified connection requests. Certificate Authority
+ca = certifi.where()
+
 
 class NetworkData_Extract:
     def __init__(self, file_path, database, collection):
@@ -57,11 +62,6 @@ class NetworkData_Extract:
 
 
 if __name__ == "__main__":
-    load_dotenv()
-    mongo_db_url = os.getenv("MONGO_DB_URL")
-    # only allow certified connection requests. Certificate Authority
-    ca = certifi.where()
-
     FILE_PATH = "Network_Data/phisingData.csv"
     DATABASE = "Study_NetworkSecurity_DB"
     Collection = "NetworkData"
