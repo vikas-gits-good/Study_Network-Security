@@ -1,5 +1,4 @@
 import sys
-
 from Network_Security.Logging.logger_train import logger_train
 
 
