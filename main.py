@@ -1,6 +1,8 @@
 from Network_Security.Exception.exception import NetworkSecurityException
 from Network_Security.Logging.logger_train import logger_train
 from Network_Security.Components.data_ingestion import DataIngestion
+from Network_Security.Components.data_validation import DataValidation
+
 # from Network_Security.Entity.config_entity import (
 #     DataIngestionConfig,
 #     TrainingPipelineConfig,
@@ -20,6 +22,8 @@ def Main():
 
         ## Strat-3
         data_ings_artf = DataIngestion().init_data_ings()
+
+        data_vald_artf = DataValidation(data_ings_artf).init_data_vald()
 
         logger_train.info("Data_Ingestion: Data Ingestion Finished")
 
