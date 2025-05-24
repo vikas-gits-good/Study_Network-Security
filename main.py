@@ -2,6 +2,7 @@ from Network_Security.Exception.exception import NetworkSecurityException
 from Network_Security.Logging.logger_train import logger_train
 from Network_Security.Components.data_ingestion import DataIngestion
 from Network_Security.Components.data_validation import DataValidation
+from Network_Security.Components.data_transformation import DataTransformation
 
 # from Network_Security.Entity.config_entity import (
 #     DataIngestionConfig,
@@ -12,20 +13,16 @@ from Network_Security.Components.data_validation import DataValidation
 def Main():
     try:
         logger_train.info("Data_Ingestion: Data Ingestion Started")
-        ## Strat-1
-        # data_ings = DataIngestion(DataIngestionConfig(TrainingPipelineConfig()))
-
-        ## Strat-2
-        # train_pipe_config = TrainingPipelineConfig()
-        # data_ings_config = DataIngestionConfig(train_pipe_config)
-        # data_ings = DataIngestion(data_ings_config)
-
-        ## Strat-3
         data_ings_artf = DataIngestion().init_data_ings()
-
-        data_vald_artf = DataValidation(data_ings_artf).init_data_vald()
-
         logger_train.info("Data_Ingestion: Data Ingestion Finished")
+
+        logger_train.info("Data_Validation: Data Validation Started")
+        data_vald_artf = DataValidation(data_ings_artf).init_data_vald()
+        logger_train.info("Data_Validation: Data Validation Finished")
+
+        logger_train.info("Data_Transformation: Data Transformation Started")
+        data_trfm_artf = DataTransformation(data_vald_artf).init_data_trfm()
+        logger_train.info("Data_Transformation: Data Transformation Finished")
 
     except Exception as e:
         raise NetworkSecurityException(e)
