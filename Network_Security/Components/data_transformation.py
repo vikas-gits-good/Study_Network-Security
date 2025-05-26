@@ -5,7 +5,7 @@ from Network_Security.Entity.artifact_entity import (
     DataValidationArtifact,
     DataTransformationArtifact,
 )
-from Network_Security.Utils.main_utils.utils import save_data_as_npy, save_object
+from Network_Security.Utils.main_utils.utils import save_numpy_array, save_object
 from Network_Security.Constants.train_pipeline import (
     TARGET_COLUMN,
     DATA_TRANSFORMATION_IMPUTER_PARAMS,
@@ -96,11 +96,11 @@ class DataTransformation:
             logger_train.info(
                 "Data_Transformation: Saving Train-Test transformed array started"
             )
-            save_data_as_npy(
+            save_numpy_array(
                 file_path=self.data_trfm_conf.trfm_train_file_path,
                 array=x_train_trfm_ary,
             )
-            save_data_as_npy(
+            save_numpy_array(
                 file_path=self.data_trfm_conf.trfm_test_file_path, array=x_test_trfm_ary
             )
             save_object(

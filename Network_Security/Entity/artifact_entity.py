@@ -22,3 +22,17 @@ class DataTransformationArtifact:
     trfm_object_file_path: str
     trfm_train_file_path: str
     trfm_test_file_path: str
+
+
+@dataclass
+class ClassificationMetricArtifact:
+    score_f1: float
+    score_precision: float
+    score_recall: float
+
+
+@dataclass
+class ModelTrainerArtifact:
+    trnd_modl_file_path: str
+    train_metric_artf: ClassificationMetricArtifact
+    test_metric_artf: ClassificationMetricArtifact

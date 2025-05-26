@@ -25,7 +25,10 @@ FILE_NAME: str = "phisingData.csv"
 TRAIN_FILE_NAME = "train.csv"
 TEST_FILE_NAME = "test.csv"
 
-SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
+SCHEMA_FILE_PATH: str = os.path.join("data_schema", "schema.yaml")
+
+SAVED_MODEL_DIR: str = "saved_models"
+# MODEL_FILE_NAME: str = ""
 
 
 """
@@ -50,3 +53,12 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS: dict = {  # for knn imputer
     "weights": "uniform",
 }
 DATA_TRANSFORMATION_PIPELINE_OBJECT_FILE_NAME = "ppln_prpc.pkl"
+
+"""
+Model Training related constants
+"""
+MODEL_TRAINER_DIR_NAME: str = "model_trainer"
+MODEL_TRAINER_BEST_MODEL_DIR: str = "trained_model"
+MODEL_TRAINER_BEST_MODEL_FILE_NAME: str = "best_model.pkl"
+MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
+MODEL_TRAINER_FIT_THRESHOLD: float = 0.05

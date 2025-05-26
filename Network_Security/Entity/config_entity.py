@@ -95,3 +95,20 @@ class DataTransformationConfig:
             train_pipeline.DATA_TRANSFORMATION_TRFM_OBJECT_DIR,
             train_pipeline.DATA_TRANSFORMATION_PIPELINE_OBJECT_FILE_NAME,
         )
+
+
+class ModelTrainerConfig:
+    def __init__(
+        self, train_pipe_config: TrainingPipelineConfig = TrainingPipelineConfig()
+    ):
+        self.modl_trnr_dir: str = os.path.join(
+            train_pipe_config.artifact_dir,
+            train_pipeline.MODEL_TRAINER_DIR_NAME,
+        )
+        self.best_modl_file_path: str = os.path.join(
+            self.modl_trnr_dir,
+            train_pipeline.MODEL_TRAINER_BEST_MODEL_DIR,
+            train_pipeline.MODEL_TRAINER_BEST_MODEL_FILE_NAME,
+        )
+        self.expected_Accuracy: float = train_pipeline.MODEL_TRAINER_EXPECTED_SCORE
+        self.overfit_thresh: float = train_pipeline.MODEL_TRAINER_FIT_THRESHOLD
