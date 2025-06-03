@@ -90,6 +90,7 @@ class ModelTrainer:
             logger_train.info(
                 "Model_Trainer: Creation of pred pipeline object finished"
             )
+            save_object(file_path="final_models/model.pkl", obj=best_model_object)
 
             model_train_artf = ModelTrainerArtifact(
                 trnd_modl_file_path=self.model_train_conf.best_modl_file_path,

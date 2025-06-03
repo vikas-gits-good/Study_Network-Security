@@ -116,6 +116,7 @@ class DataTransformation:
                 trfm_train_file_path=self.data_trfm_conf.trfm_train_file_path,
                 trfm_test_file_path=self.data_trfm_conf.trfm_test_file_path,
             )
+            save_object(file_path="final_models/ppln_prpc.pkl", obj=ppln_prpc)
 
             return data_trfm_artf
 
