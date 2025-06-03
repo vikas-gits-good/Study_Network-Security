@@ -1,12 +1,9 @@
 import os
-import sys
 import json
 from dotenv import load_dotenv
 import certifi
 import pandas as pd
 from pymongo.mongo_client import MongoClient
-import numpy as np
-import pymongo
 
 from Network_Security.Exception.exception import NetworkSecurityException
 from Network_Security.Logging.logger_train import logger_train
