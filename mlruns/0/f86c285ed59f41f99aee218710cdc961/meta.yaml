@@ -1,0 +1,15 @@
+artifact_uri: file:///home/who/Documents/Coding/Courses/Krish%20Nayak/Full_ML_DL_NLP/Study_Network-Security/mlruns/0/f86c285ed59f41f99aee218710cdc961/artifacts
+end_time: 1748939283614
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f86c285ed59f41f99aee218710cdc961
+run_name: rogue-goat-773
+run_uuid: f86c285ed59f41f99aee218710cdc961
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748939279638
+status: 3
+tags: []
+user_id: who

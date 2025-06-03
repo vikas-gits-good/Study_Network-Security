@@ -75,8 +75,9 @@ def load_object(file_path: str = None) -> object:
         if not os.path.exists(file_path):
             raise Exception(f"The given path [{file_path}] does not exist")
         with open(file_path, "rb") as file_obj:
-            return pickle.load(file_obj)
-        logger_train.info("Utils: load object finished")
+            item = pickle.load(file_obj)
+            logger_train.info("Utils: load object finished")
+            return item
 
     except Exception as e:
         raise NetworkSecurityException(e)

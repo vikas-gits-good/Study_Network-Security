@@ -18,6 +18,7 @@ from Network_Security.Constants.model_params import models_dict, params_dict
 import os
 import pandas as pd
 import numpy as np
+import mlflow
 
 from sklearn.metrics import f1_score
 
@@ -31,6 +32,22 @@ class ModelTrainer:
         try:
             self.model_train_conf = model_train_conf
             self.data_trfm_artf = data_trfm_artf
+
+        except Exception as e:
+            raise NetworkSecurityException(e)
+
+    def track_mlflow(self, model, metric):
+        try:
+            with mlflow.start_run():
+                metrics = {
+                    "f1_score": metric.score_f1,
+                    "precision_score": metric.score_precision,
+                    "recall_score": metric.score_recall,
+                }
+                # Track model and its metrics
+                for name, value in metrics.items():
+                    mlflow.log_metric(name, value)
+                mlflow.sklearn.log_model(model, "model")
 
         except Exception as e:
             raise NetworkSecurityException(e)
@@ -56,6 +73,10 @@ class ModelTrainer:
             clasf_train_metric = get_clasf_score(y_train, y_train_pred)
             clasf_test_metric = get_clasf_score(y_test, y_test_pred)
             logger_train.info("Model_Trainer: Calculation of metrics finished")
+
+            # mlflow tracking
+            self.track_mlflow(best_model_object, clasf_train_metric)
+            self.track_mlflow(best_model_object, clasf_test_metric)
 
             logger_train.info("Model_Trainer: Creation of pred pipeline object started")
             ppln_prpc = load_object(self.data_trfm_artf.trfm_object_file_path)
