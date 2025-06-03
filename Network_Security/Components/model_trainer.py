@@ -16,11 +16,9 @@ from Network_Security.Utils.ml_utils.metric.clasf_metric import get_clasf_score
 from Network_Security.Constants.model_params import models_dict, params_dict
 
 import os
-import pandas as pd
 import numpy as np
 import mlflow
-
-from sklearn.metrics import f1_score
+import dagshub
 
 
 class ModelTrainer:
@@ -32,6 +30,11 @@ class ModelTrainer:
         try:
             self.model_train_conf = model_train_conf
             self.data_trfm_artf = data_trfm_artf
+            dagshub.init(
+                repo_owner="vikas-gits-good",
+                repo_name="Study_Network-Security",
+                mlflow=True,
+            )
 
         except Exception as e:
             raise NetworkSecurityException(e)
@@ -117,6 +120,8 @@ class ModelTrainer:
             logger_train.info("Model_Trainer: Full model training started")
             model_train_artf = self.train_models(x_train, y_train, x_test, y_test)
             logger_train.info("Model_Trainer: Full model training finished")
+
+            return model_train_artf
 
         except Exception as e:
             raise NetworkSecurityException(e)

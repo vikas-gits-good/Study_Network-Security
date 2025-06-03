@@ -12,6 +12,8 @@ Research/
 networksecurity/
 logs/
 Artifacts/
+mlruns/
+.trash
 
 # Distribution / packaging
 .Python

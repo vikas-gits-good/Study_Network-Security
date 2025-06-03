@@ -11,4 +11,5 @@ dill
 PyYAML
 xgboost
 mlflow
+dagshub
 -e .
