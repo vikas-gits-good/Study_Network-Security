@@ -6,9 +6,9 @@ WORKDIR /app
 COPY . .
 
 # Update apt, install awscli, clean cache in one RUN to reduce layers and size
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends awscli && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt update && \
+    apt install -y --no-install-recommends awscli && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 RUN pip install --upgrade --no-cache-dir pip
