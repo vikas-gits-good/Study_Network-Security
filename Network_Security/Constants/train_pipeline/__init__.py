@@ -62,3 +62,9 @@ MODEL_TRAINER_BEST_MODEL_DIR: str = "trained_model"
 MODEL_TRAINER_BEST_MODEL_FILE_NAME: str = "best_model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_FIT_THRESHOLD: float = 0.05
+
+
+"""
+Model Pusher related Constants
+"""
+TRAINING_BUCKET_NAME: str = "s3-bucket-network-security"

@@ -120,3 +120,14 @@ def evaluate_models(
 
     except Exception as e:
         raise NetworkSecurityException(e)
+
+
+def s3_sync(source: str = None, destination: str = None):
+    try:
+        logger_train.info("Model_Pusher: Syncing with S3 bucket started")
+        command = f"aws s3 sync {source} {destination}"
+        os.system(command)
+        logger_train.info("Model_Pusher: Syncing with S3 bucket finished")
+
+    except Exception as e:
+        raise NetworkSecurityException(e)

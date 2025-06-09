@@ -126,10 +126,3 @@ class ModelTrainer:
 
         except Exception as e:
             raise NetworkSecurityException(e)
-
-
-try:
-    ...
-
-except Exception as e:
-    raise NetworkSecurityException(e)

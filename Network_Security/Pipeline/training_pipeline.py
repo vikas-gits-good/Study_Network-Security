@@ -5,6 +5,7 @@ from Network_Security.Components.data_ingestion import DataIngestion
 from Network_Security.Components.data_validation import DataValidation
 from Network_Security.Components.data_transformation import DataTransformation
 from Network_Security.Components.model_trainer import ModelTrainer
+from Network_Security.Components.model_pusher import ModelPusher
 
 
 class TrainingPipeline:
@@ -28,6 +29,10 @@ class TrainingPipeline:
             logger_train.info("Model_Trainer: Model Training Started")
             model_train_artf = ModelTrainer(data_trfm_artf).init_model_train()
             logger_train.info("Model_Trainer: Model Training Finished")
+
+            logger_train.info("Model_Pusher: Model Pusher Started")
+            model_pusher_artf = ModelPusher(model_train_artf).init_model_pusher()
+            logger_train.info("Model_Pusher: Model Pusher Finished")
 
             return model_train_artf
 

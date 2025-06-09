@@ -36,3 +36,11 @@ class ModelTrainerArtifact:
     trnd_modl_file_path: str
     train_metric_artf: ClassificationMetricArtifact
     test_metric_artf: ClassificationMetricArtifact
+
+
+@dataclass
+class ModelPusherArtifact:
+    local_artifact_dir: str
+    local_model_dir: str
+    cloud_artifact_dir: str
+    cloud_model_dir: str

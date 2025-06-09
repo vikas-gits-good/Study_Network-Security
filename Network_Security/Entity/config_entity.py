@@ -10,6 +10,7 @@ class TrainingPipelineConfig:
         self.artifact_name = train_pipeline.ARTIFACT_DIR
         self.artifact_dir = os.path.join(self.artifact_name, timestamp)
         self.timestamp = timestamp
+        self.model_dir = os.path.join("final_models")
 
 
 class DataIngestionConfig:
@@ -112,3 +113,14 @@ class ModelTrainerConfig:
         )
         self.expected_Accuracy: float = train_pipeline.MODEL_TRAINER_EXPECTED_SCORE
         self.overfit_thresh: float = train_pipeline.MODEL_TRAINER_FIT_THRESHOLD
+
+
+class ModelPusherConfig:
+    def __init__(
+        self, train_pipe_config: TrainingPipelineConfig = TrainingPipelineConfig()
+    ):
+        self.url_artifact = f"s3://{train_pipeline.TRAINING_BUCKET_NAME}/artifact/{train_pipe_config.timestamp}"
+        self.url_models = f"s3://{train_pipeline.TRAINING_BUCKET_NAME}/final_models/{train_pipe_config.timestamp}"
+
+        self.lcl_artifact_dir = train_pipe_config.artifact_dir
+        self.lcl_models_dir = train_pipe_config.model_dir
