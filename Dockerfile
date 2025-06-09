@@ -2,8 +2,8 @@ FROM python:3.10-slim-bookworm
 
 WORKDIR /app
 
-# Copy only requirements first to leverage Docker cache
-COPY requirements.txt .
+# Copy the rest of the application code
+COPY . .
 
 # Update apt, install awscli, clean cache in one RUN to reduce layers and size
 RUN apt update && \
@@ -12,8 +12,5 @@ RUN apt update && \
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code
-COPY . .
 
 CMD ["python3", "app.py"]
